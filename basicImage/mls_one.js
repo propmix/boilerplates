@@ -27,8 +27,8 @@ var ajaximg = function (data) {
     }
 };
 function display(form) {
-    var url = "https://www.propmix.io/api/v1/MlsData";
-    var contData = {'access_token': 'Qji7AOFvPTYywmgW4ZNoMn4sxEc7vJSVWlF9cSiE36JprNb2oSWi6UaBlNPgoD0a'};
+    var url = "API END POINT";
+    var contData = {'access_token': 'TOKEN'};
     var formser = serializeObject(form);
     console.log(formser);
     var dat = {"where": formser};
@@ -102,7 +102,7 @@ function formatHtml(data) {
     var mlsboard = data.listaor;
     $("#datadetails").html(html);
     //===============================================================================
-    var url = "https://www.propmix.io/api/v1/MlsData/getImageUrl";
-    var $jsondata = {"mlsListingKey": data.listingkey, "MlsBoard": mlsboard, "OrderID": 12345, "access_token": "Qji7AOFvPTYywmgW4ZNoMn4sxEc7vJSVWlF9cSiE36JprNb2oSWi6UaBlNPgoD0a"};
+    var url = "API END POINT";
+    var $jsondata = {"mlsListingKey": data.listingkey, "MlsBoard": mlsboard, "OrderID": ORDERID, "access_token": "TOKEN"};
     ajaxCall(url, $.param($jsondata), ajaximg);
 }
