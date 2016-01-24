@@ -53,8 +53,8 @@ $(document.body)
         .on('submit', "[id='searchProperty']", function (e) {//handle submit events
             e.preventDefault();
             var $formObj = this;
-            $url = 'https://www.propmix.io/api/v1/MlsData/getListings';
-            var $xtra = {'MonthsBack': 24, 'OrderID': 12345, 'access_token': 'Qji7AOFvPTYywmgW4ZNoMn4sxEc7vJSVWlF9cSiE36JprNb2oSWi6UaBlNPgoD0a'};
+            $url = 'API END POINT';
+            var $xtra = {'MonthsBack': MONTH, 'OrderID': ORDERID, 'access_token': 'TOKEN'};
             ajaxcall($url, $div, $formObj, $xtra, fulldatafunction);
         })
 
@@ -130,14 +130,14 @@ function updateImages() {
     var lat, lang, addr, city, beds, style;
     var map;
     var contentString;
-    var $urli = "https://www.propmix.io/api/v1/MlsData/getImageUrl";
+    var $urli = "API END POINT";
     $("div[data-prop=1]").each(function () {
         listKey = $(this).data('listkey');
         listArray = JSON.parse(sessionStorage.listkey)
         if (listArray.indexOf(listKey) == -1) {
             listArray.push(listKey);
             sessionStorage.listkey = JSON.stringify(listArray);
-            var $jsondata = {"mlsListingKey": listKey, "MlsBoard": "Miami Board of realtors", "OrderID": 12345, "access_token": "Qji7AOFvPTYywmgW4ZNoMn4sxEc7vJSVWlF9cSiE36JprNb2oSWi6UaBlNPgoD0a"};
+            var $jsondata = {"mlsListingKey": listKey, "MlsBoard": "MLS BOARD", "ORDERID": 12345, "access_token": "TOKEN"};
             ajaxcall($urli, listKey, '', $jsondata, updateimagefn);
         } else {
             listArray = JSON.parse(sessionStorage[listKey]); //console.log(listArray);
