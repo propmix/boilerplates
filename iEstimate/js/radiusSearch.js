@@ -2,13 +2,13 @@
 var jsonData;
 function FindRadius(form)
 {
-    var contData = {'access_token': 'XC49HCRruC3LrMaKDwrgmodlR9eWR3sUVBse3HInRjdgLB2dMMVu0Hs3JLWkMzqK'};
+    var contData = {'access_token': 'TOKEN'};
      var formser = serializeObject(form);
     console.log(formser);
     var dat = {"where": formser};
     var obj = JSON.stringify(dat);
     var data = "filter=" + obj + "&" + $.param(contData);
-    var url = "https://www.propmix.io/api/v1/iEstimates?" + data;
+    var url = "API END POINT?" + data;
   //  alert(url);
     ajaxCall(url)
 
