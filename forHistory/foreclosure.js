@@ -8,8 +8,8 @@ $(document.body)
         .on('submit', "[id='searchforeclosure']", function (e) {//handle submit events
             e.preventDefault();
             var $formObj = this;
-            $url = 'https://www.propmix.io/api/v1/Foreclosures';
-            var $xtra = {'access_token': 'Qji7AOFvPTYywmgW4ZNoMn4sxEc7vJSVWlF9cSiE36JprNb2oSWi6UaBlNPgoD0a'};
+            $url = 'API END POINT';
+            var $xtra = {'access_token': 'TOKEN'};
             var formser = serializeObject($formObj);
             console.log(formser);
             var dat = {"where": formser};
