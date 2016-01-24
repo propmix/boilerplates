@@ -91,7 +91,7 @@ var menu = d3.select("#menu select")
     .on("change", change);    
 
 //suck in the data, store it in a value called formatted, run the redraw function
-d3.json("https://www.propmix.io/api/v1/iPriceTrends", function(data) {
+d3.json("API END POINT", function(data) {
 									formatted = data;
 							        redraw();
     							  });
