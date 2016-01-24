@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .middleplace{
+                width: 600px;
+                height: 400px;
+
+                position: absolute;
+                top:0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+
+                margin: auto;
+            }
+            .inputform{
+                height:34px ;
+                width:100%;
+                font-size:18px;
+                line-height: 1.42857143;
+                color: #555;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                vertical-align: middle;
+                margin-bottom:10px;
+                padding: 6px 12px;
+            }
+            .button{
+                box-shadow: 0 1px 0 #fff;
+                height: 43px;
+                line-height: 11px;
+                color: #fff;
+                background-color: #55acee;
+                background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.05));
+                -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00000000, endColorstr=#0C000000)";
+                border: 1px solid #697986;
+                border-radius: 4px;
+                cursor: pointer;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: bold;
+                line-height: normal;
+                padding: 8px 16px;
+                position: relative;
+            }
+        </style>
+    </head>
+    <body style="background-color: #B7B7BD">
+        <div class="middleplace">
+            <div style="padding: 3px 6px 3px 6px;width:100%">
+                <div style="margin-bottom:10px;text-align: center"><h1>MLS Validation</h1></div>
+                <div id="authentication" style="text-align: center;">
+                <form onsubmit=" return validate(this);" >
+                    <ul style="list-style-type: none">
+                        <!--<li><input class="inputform" placeholder="Mls Board" type="text">-->
+                        <!--</li>-->
+                        <li><select name="MlsBoard" class="inputform">
+                                <option value=""> Select Mls Board</option>
+                                <option value="Miami Board of Realtors">Miami Board of Realtors</option>
+                            </select>
+                        </li>
+                        <li><input name ="UserName" class="inputform" placeholder="User Name" type="text"></li>
+                        <li><input name="Password" class="inputform" placeholder="Password" type="text"></li>
+                        <li><input name="UserAgent" class="inputform" placeholder="User Agent" type="text"></li>
+                        <li><input name="UserAgentPassword" class="inputform" placeholder="User Agent Password" type="text"></li>
+                        <li><select name="RetsVersion" class="inputform">
+                                <option value=""> Select Rets Version</option>
+                                <option value="RETS/1.7.2">RETS/1.7.2</option>
+                            </select>
+                        </li>
+                        <li><input class="button" value="Validate"  type="submit"></li>
+
+                    </ul>
+
+                </form></div>
+                </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="login.js"></script>
+    </body>
+</html>

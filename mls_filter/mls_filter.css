@@ -1,0 +1,50 @@
+/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+.row.content {/* height: 0px; */}
+
+/* Set gray background color and 100% height */
+.sidenav {
+    background-color: #f1f1f1;
+    height: 100%;
+}
+
+
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+    .row.content {height: auto;} 
+}
+#searchP td {
+    width: 21px;
+}
+#searchP {
+    border-spacing: 100px;
+    width:100%
+}
+
+.right-div{
+    float: right;
+    position: absolute;
+    right: 0;
+    top: 44px;
+    bottom: 0;
+    -webkit-transition: width .3s;
+    transition: width .3s;
+    z-index: 21;
+    width: 100px;
+    background-color: green;
+}
+
+.propBox{
+    background-color: #f1f1f1;
+    padding-bottom:7px;
+    -webkit-box-shadow:0px 1px 1px #737373;
+    -moz-box-shadow:0px 1px 1px #737373;
+    box-shadow:0px 0px 1px #737373;
+}
+#propertydata{
+    box-shadow: 4px 0px 30px black;height:400px;overflow-y: auto;z-index: 44;background-color: #d9d9d9;
+}
