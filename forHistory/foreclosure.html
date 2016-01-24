@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Data</title>
@@ -7,25 +7,56 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="main.css">
         <link rel="stylesheet" href="daterangepicker.css">
+        <style>
+            .input-label {
+				color: #bbbbbb;
+				left: 0;
+				font-size: 15px;
+				font-weight:normal;
+				padding-top:10px;
+			}
+			.input-box {
+				margin-bottom: 0;
+				border-bottom: 1px solid #ececec;
+				box-shadow: 0px 1px 0px #fff;
+				color: #444444;
+				font-size: 15px;
+				height: 20px;
+				border-top:none;
+				border-left:none;
+				border-right:none;
+				text-decoration:none;
+				outline:none;
+				margin-bottom:10px;
+				width:100%;
+			}
+			button {
+				background-color: #eb0f43;
+				color: #FFFFFF;
+				border: none;
+				width: 100%;
+				padding: 15px 0;
+				text-transform: uppercase;
+				font-weight: 600;
+				border-radius: 3px;
+				text-align:center;
+			}
+        </style>
     </head>
     <body>
         <div style="margin-top:20px" class="container-fluid">
             <div class="row content">
                 <form class="form-inline" role="form" id="searchforeclosure">
                     <div class="row">
-                        <div class="col-md-1 col-md-offset-1"><label for="addr">Address</label></div>
-                        <div class="col-md-1"><input required="" name="propertyAddress" id="datefrom" type="text" class="form-control"></div>
-                        <div class="col-md-1 col-md-offset-1"><label for="City">City:</label></div>
-                        <div class="col-md-1"><input type="text" class="form-control" id="City" name="propertyCity" placeholder="Enter City"></div>
+                        <div class="col-md-3"><label class="input-label" for="addr">Address</label><input required="" name="propertyAddress" id="datefrom" type="text" class="input-box">
+                        </div>
+                        <div class="col-md-3"><label class="input-label" for="City">City:</label><input type="text" class="input-box" id="City" name="propertyCity" placeholder="Enter City"></div>
 
-                        <div class="col-md-1 col-md-offset-1"><label for="Zip">Zipcode:</label></div>
-                        <div class="col-md-1"><input type="text" class="form-control" name="propertyZip" id="Zip" placeholder="Enter Zipcode"></div>
+                        <div class="col-md-3"><label class="input-label" for="Zip">Zipcode:</label><input type="text" class="input-box" name="propertyZip" id="Zip" placeholder="Enter Zipcode"></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-1 col-md-offset-1"><label for="City">County</label></div>
-                        <div class="col-md-1"><input  type="text" class="form-control" id="dateto" name="propertyCounty"></div>
-                        <div class="col-md-1 col-md-offset-1"><label for="State">State:</label></div>
-                        <div class="col-md-1"><select class="form-control" name="propertyState">
+                        <div class="col-md-3"><label class="input-label" for="City">County</label><input  type="text" class="input-box" id="dateto" name="propertyCounty"></div>
+                        <div class="col-md-3"><label class="input-label" for="State">State:</label><select class="input-box" name="propertyState">
                                 <option value="">Select</option>
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
@@ -81,8 +112,8 @@
                             </select></div>
                     </div>
                     <div class="row" style="padding-top: 10px">
-                        <div class="col-md-5 col-md-offset-5">
-                            <button type="submit" class="btn btn-default">Submit</button>
+                        <div class="col-md-3 col-md-offset-5">
+                            <button type="submit" >Submit</button>
                         </div>
                     </div>
                 </form>

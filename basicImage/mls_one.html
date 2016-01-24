@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -18,35 +18,68 @@ and open the template in the editor.
           }
           .table>tbody>tr>td {
                 border-top:none;
-            }
+          }
+		  .input-label {
+				color: #bbbbbb;
+				left: 0;
+				font-size: 15px;
+				font-weight:normal;
+				padding-top:10px;
+			}
+			.input-box {
+				margin-bottom: 0;
+				border-bottom: 1px solid #ececec;
+				box-shadow: 0px 1px 0px #fff;
+				color: #444444;
+				font-size: 15px;
+				height: 20px;
+				border-top:none;
+				border-left:none;
+				border-right:none;
+				text-decoration:none;
+				outline:none;
+				margin-bottom:10px;
+				width:100%;
+			}
+			button {
+				background-color: #eb0f43;
+				color: #FFFFFF;
+				border: none;
+				width: 100%;
+				padding: 15px 0;
+				text-transform: uppercase;
+				font-weight: 600;
+				border-radius: 3px;
+				text-align:center;
+			}
         </style>
+        
     </head>
     <body>
-        <div  class="container-fluid" id="filterOptions">
-            <div class="row content">
-                    <center><font color="white"><h2>MLS Filter</h2></font></center>
-                      
-                      
-                   
-                <form class="form-inline" role="form" id="searchProperty" onsubmit=" return display(this);" style="margin-bottom:10px;">
-                    <div class="row">
-                        <div class="col-md-1 col-md-offset-1"><label for="addr" class="labelStyle">Address:</label></div>
-                        <div class="col-md-1"><input required="" name="unparsedaddress" id="Address" type="text" class="form-control" id="addr" placeholder="Enter Address" style="margin-bottom: 5px;width: 200px;"></div>
-                        
-                        <div class="col-md-1 col-md-offset-2 ">
-                            <label for="MlsBoard" class="labelStyle">  MLS Board: </label>
-                        </div>
-                        <div class="col-md-1"><select  class="form-control" name="listaor" id ="MlsBoard" >
-                                <option value="Miami Board of Realtors">Miami Board of Realtors</option>
-
-                            </select></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-1 col-md-offset-1"><label for="City" class="labelStyle">City:</label></div>
-                        <div class="col-md-1"><input type="text" class="form-control" id="City" name="city" placeholder="Enter City" style=""></div>
-                        <div class="col-md-1 col-md-offset-2"><label for="State" class="labelStyle">State:</label></div>
-                        <div class="col-md-1"><select class="form-control" name="stateorprovince"> 
-                                <option value="">Select</option>
+    	<form class="form-inline" role="form" id="searchProperty" onsubmit=" return display(this);" style="margin-bottom:10px;">
+    	<div class="row">
+        	<div class="col-sm-12">
+            	<h2>MLS Filter</h2>
+            </div>
+        	<div class="input-field col-sm-6">
+            	<label for="contact_name" class="input-label">Address:</label><br>
+				<input required="" name="unparsedaddress" id="Address" type="text" class="validate input-box">
+            </div>
+            <div class="input-field col-sm-6">
+            	<label for="contact_name" class="input-label">MLS Board:</label><br>
+				<select   class="validate input-box" name="listaor" id ="MlsBoard" >
+                	<option value="Miami Board of Realtors">Miami Board of Realtors</option>
+                </select>
+            </div>
+            <div class="clearfix"></div>
+            <div class="input-field col-sm-6">
+            	<label for="contact_name" class="input-label">City:</label><br>
+				<input type="text" class="validate input-box" id="City" name="city" style="">
+            </div>
+            <div class="input-field col-sm-6">
+            	<label for="contact_name" class="input-label">State:</label><br>
+				<select   class="validate input-box" name="stateorprovince">
+                	<option value="">Select</option>
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
                                 <option value="AZ">Arizona</option>
@@ -98,17 +131,24 @@ and open the template in the editor.
                                 <option value="WV">West Virginia</option>
                                 <option value="WI">Wisconsin</option>
                                 <option value="WY">Wyoming</option>
-                            </select></div>
-                        <div class="col-md-1 col-md-offset-1"><label for="Zip" class="labelStyle">Zipcode:</label></div>
-                        <div class="col-md-1"><input type="text" class="form-control" name="postalcode" id="Zip" placeholder="Enter Zipcode"></div>
-                    </div>
-                    <div class="row" id="sub">
-                        <div class="col-md-5 col-md-offset-5">
-                            <button type="submit" class="btn btn-default">Submit</button>
-                        </div>
-                    </div>
-                </form>
-                
+                </select>
+            </div>
+            <div class="clearfix"></div>
+            <div class="input-field col-sm-6">
+            	<label for="contact_name" class="input-label">Zipcode:</label><br>
+				<input type="text" class="validate input-box" name="postalcode" id="Zip">
+            </div>
+            <div class="clearfix"></div>
+            <div class="input-field col-sm-4">
+            	<button type="submit">Submit</button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        </form>
+    
+        <div class="container" id="filterOptions">
+            <div class="row">
+                   
                 <div class="col-sm-12 col-md-6 col-lg-6">
                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
                          <!-- Wrapper for slides -->
