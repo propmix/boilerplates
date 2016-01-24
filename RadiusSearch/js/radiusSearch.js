@@ -2,13 +2,13 @@
 var jsonData;
 function FindRadius(form)
 {
-    var contData = {'OrderID':12345,'access_token': 'XC49HCRruC3LrMaKDwrgmodlR9eWR3sUVBse3HInRjdgLB2dMMVu0Hs3JLWkMzqK'};
+    var contData = {'OrderID':ORDERID,'access_token': 'TOKEN'};
      var formser = serializeObject(form);
     console.log(formser);
    // var dat = {"where": formser};
     //var obj = JSON.stringify(formser);
     var data = $.param(formser) + "&" + $.param(contData);
-    var url = "https://www.propmix.io/api/v1/MlsData/getListings?" + data;
+    var url = "API END POINT?" + data;
   //  alert(url);
     ajaxCall(url)
 
