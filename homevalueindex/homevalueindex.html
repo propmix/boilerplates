@@ -12,11 +12,11 @@
     <!--<p class="dek">dek </p>	-->
     </div>  
     
-<p id="menu" class="menuchoice">Select City: <select>
+<p id="menu" class="menuchoice">Select County: <select>
     <option value="Broward County">Broward County</option>
     <option value="Miami-Dade County">Miami-Dade County</option>
     <option value="Palm Beach County">Palm Beach County</option>
-    <option value="Other County">Other County</option>
+   
 
 
     </select>
@@ -46,7 +46,7 @@ var NumbType = d3.format(".2f");
 
 // color array
 //var bluescale4 = ["#8BA9D0", "#6A90C1", "#066CA9", "#004B8C"];
-var bluescale4 = ["#90EE90", "#90EE90", "#90EE90", "#90EE90"];
+var bluescale4 = ["#228B22", "#228B22", "#228B22", "#228B22"];
 
 //color function pulls from array of colors stored in color.js
 var color = d3.scale.ordinal().range(bluescale4);
@@ -62,7 +62,7 @@ var maketip = function (d) {
 //define your year format here, first for the x scale, then if the date is displayed in tooltips
 //var parseDate = d3.time.format("%m/%d/%y").parse;
 //var parseDate = d3.time.format("%B %Y").parse;
-var parseDate = d3.time.format("%b-%Y").parse;
+var parseDate = d3.time.format("%B %Y").parse;
 
 var formatDate = d3.time.format("%b %d, '%y");
 
@@ -93,7 +93,7 @@ var menu = d3.select("#menu select")
     .on("change", change);    
 
 //suck in the data, store it in a value called formatted, run the redraw function
-d3.json("API END POINT", function(data) {
+d3.json("https://www.propmix.io/api/v1/HomeValueIndices?access_token=mqsHElavSCGbdErjQGQFerX2YOeEocGKjMD5ikWIqwetchDUyIABOKIDiRyNqryL", function(data) {
 									formatted = data;
 							        redraw();
     							  });
