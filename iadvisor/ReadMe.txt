@@ -1,8 +1,6 @@
-Minimum Requirements :
-Java Latest 
+Execution Steps:
 
+1. Windows System - double click on the "start" batch file.
+   Mac System - double click on "mac.sh" file.
 
-Steps:
-1) Double click start.bat file
-2) it should start the web browser with url localhost:[port]
-3) the app will stop working once the command prompt window is closed.
+2. The application will open in a browser.
