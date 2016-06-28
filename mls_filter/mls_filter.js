@@ -18,7 +18,6 @@ fulldatafunction = function ($data) {
     $data = fulldatastorage($data);
     var $processedData = processData($data);
     $('#' + $div).html($processedData);
-    updateImages();
 }
 updateimagefn = function ($data) {
     $resdata = $data;
@@ -28,7 +27,7 @@ updateimagefn = function ($data) {
         $.each($resdata['listingImages'], function () {
             var tempimgArry = new Array();
             $.each(this, function (key, value) {
-                if (key == 'ListingKey') {
+                if (key == 'Rets_id') {
                     imageupdatediv = value;
                 } else {
                     if (!tempImg) {
@@ -53,8 +52,8 @@ $(document.body)
         .on('submit', "[id='searchProperty']", function (e) {//handle submit events
             e.preventDefault();
             var $formObj = this;
-            $url = 'API END POINT';
-            var $xtra = {'MonthsBack': MONTH, 'OrderID': ORDERID, 'access_token': 'TOKEN'};
+            $url = 'https://api.propmix.io/propmixapps/MlsListings/getListings';
+            var $xtra = {'MonthsBack': 24, 'OrderID': 123};
             ajaxcall($url, $div, $formObj, $xtra, fulldatafunction);
         })
 
@@ -125,34 +124,6 @@ function ajaxcall($url, $div, $form, $xtra, $function) {
     });
     return tempvalue;
 }
-function updateImages() {
-    var start = 0;
-    var lat, lang, addr, city, beds, style;
-    var map;
-    var contentString;
-    var $urli = "API END POINT";
-    $("div[data-prop=1]").each(function () {
-        listKey = $(this).data('listkey');
-        listArray = JSON.parse(sessionStorage.listkey)
-        if (listArray.indexOf(listKey) == -1) {
-            listArray.push(listKey);
-            sessionStorage.listkey = JSON.stringify(listArray);
-            var $jsondata = {"mlsListingKey": listKey, "MlsBoard": "MLS BOARD", "ORDERID": 12345, "access_token": "TOKEN"};
-            ajaxcall($urli, listKey, '', $jsondata, updateimagefn);
-        } else {
-            listArray = JSON.parse(sessionStorage[listKey]); //console.log(listArray);
-            var i, tempimg;
-            imageupdatediv = 0;
-            $.each(listArray, function (key, value) {
-                var tempImgSrc = '<svg data-key=' + listKey + ' width="100%" height="100%">';
-                tempImgSrc += '<image  xlink:href="' + value + '"  width="100%" height="100%"/>'
-                tempImgSrc += '</svg>';
-                $("#" + listKey).html(tempImgSrc);
-            })
-        }
-
-    })
-}
 
 function fulldatastorage($data) {
     sessionStorage.propdata = null;
@@ -189,7 +160,7 @@ function compareproperty() {
     html += '<tr ><td class="strip" >Heating</td><td>' + (comprop1.Heating || '') + '</td><td>' + (comprop2.Heating || '') + '</td></tr>';
     html += '<tr ><td class="strip">Style</td><td> ' + (comprop1.Style || '') + ' </td><td>' + (comprop2.Style || '') + '</td></tr>';
     html += '<tr><td class="strip">GLA</td><td> ' + (comprop1.GLA || '') + '</td><td>' + (comprop2.GLA || '') + ' </td></tr>';
-    html += '<tr class="strip"><td></td><td><a data-showdet="' + (comprop1.ListingKey || '') + '" href="javascript:void(0)"  class="button">Show Details</a></td><td><a data-showdet="' + comprop1.ListingKey + '" href="javascript:void(0)" class="button">Show Details</a></td></tr>';
+   // html += '<tr class="strip"><td></td><td><a data-showdet="' + (comprop1.Rets_id || '') + '" href="javascript:void(0)"  class="button">Show Details</a></td><td><a data-showdet="' + comprop1.Rets_id + '" href="javascript:void(0)" class="button">Show Details</a></td></tr>';
     html += '<div id="listDet"></div>';
     $("#comparetable").html(html);
     //console.log(comprop1);console.log(comprop2);
@@ -203,7 +174,7 @@ function returnProperty(data, key) {
         for (i = start; i < $dataLength; i++) {
             $this = data[i];
             if (!$this['Total Comparables']) {
-                if ($this.ListingKey == key) {
+                if ($this.Rets_id == key) {
                     break;
                 }
             }
@@ -232,7 +203,7 @@ function processData($data, $page) {
             var start = 0;
             var contentString;
             $html += '<div style="width:100%"><button id ="mapdisp" onclick = "displaymap()" style="width:40%" type="button"  class="btn btn-primary ">Map</button><button onclick = "displaycompare()" id="comparedisp" style="width:40%" type="button"  class="btn btn-primary">Compare</button></div></div>';
-
+var img ;
             for (i = start; i < $dataLength; i++) {
 
                 $this = $dataArray[i];
@@ -242,12 +213,13 @@ function processData($data, $page) {
                         map = mapInitialize(Number($this.Latitude), Number($this.Longitude));
                     }
                     contentString = '<div class="row-content" style="width:125px"><div class="row"><div class="col-sm-12"><div class="col-sm-12"><div class="row"><div class="col-sm-12"><strong>' + $this.Address + ', ' + $this.City + '</strong></div><div class="col-sm-12">' + $this.Beds + 'BHK</div><div class="col-sm-12">' + $this.Style + '</div></div> </div></div></div></div></div>';
-                    setmarker(map, Number($this.Latitude), Number($this.Longitude), contentString, $this.ListingKey);
+                    setmarker(map, Number($this.Latitude), Number($this.Longitude), contentString, $this.Rets_id);
                     $html += '<div style="padding-bottom:8px;">';
-                    $html += '<div style="display:block" id=popup' + $this.ListingKey + '  data-prop=1 data-lat=' + $this.Latitude + ' data-lang=' + $this.Longitude + '  data-listkey = ' + $this.ListingKey + ' class="row propBox">';
-                    $html += '<div id=' + $this.ListingKey + ' class="col-sm-6" style="height:80px">';
+                    $html += '<div style="display:block" id=popup' + $this.Rets_id + '  data-prop=1 data-lat=' + $this.Latitude + ' data-lang=' + $this.Longitude + '  data-listkey = ' + $this.Rets_id + ' class="row propBox">';
+                    $html += '<div id=' + $this.Rets_id + ' class="col-sm-6" style="height:80px">';
                     $html += '<svg width="100%" height="100%">';
-                    $html += '<image xlink:href="propmix.png"  width="100%" height="100%"/>'
+                    img  = $this.ImageUrl ? $this.ImageUrl.split('|')[0] :'';
+                    $html += '<image xlink:href="'+img+'"  width="100%" height="100%"/>'
                     $html += '</svg>';
                     $html += '</div>';
                     $html += '<div class="col-sm-6"><div class="row">';

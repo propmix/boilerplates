@@ -2,8 +2,8 @@
 <meta charset="utf-8">
 <body>
 <link href="stylesheet.css" rel="stylesheet" type="text/css">
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="jquery.tipsy.js"></script>
     
 <div id="container">
@@ -95,7 +95,7 @@ var menu = d3.select("#menu select")
     .on("change", change);    
 
 //suck in the data, store it in a value called formatted, run the redraw function
-d3.json("API END POINT", function(data) {
+d3.json("https://www.propmix.io/api/v1/iPriceTrends?access_token=pQIh3IT7lrIiRLkGjXSFKIGF9LSMeOkUlDync5qyrpCOubmr6dfNtcwb44e3Ccjx", function(data) {
 									formatted = data;
 							        redraw();
     							  });

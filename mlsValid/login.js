@@ -1,10 +1,10 @@
 
 
 function validate(form) {
-    var url = "API END POINT";
+    var url = "https://api.propmix.io/propmixapps/MlsListings/ValidateServer";
 
-    var Xtra = {"access_token": "TOKEN"};
-    var data = $(form).serialize() + '&' + $.param(Xtra);
+    var Xtra = {"access_token": "XPbJo1QGpPtZxn44yBY1ODEuYL0WiS4UyoO2lj2RsFrGGJ93dYaxykHfGmsb9Hnm"};
+    var data = $(form).serialize();// + '&' + $.param(Xtra);
     ajaxCall(url, data);
     return false;
 }

@@ -10,11 +10,39 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
+            .input-label {color: #bbbbbb;  left: 0; font-size: 15px; font-weight: normal;  padding-top: 10px; float: left; margin-left: 19px;
+    margin-bottom: 5px;}
+			.input-box {
+				margin-bottom: 0;
+				border-bottom: 1px solid #ececec;
+				box-shadow: 0px 1px 0px #fff;
+				color: #444444;
+				font-size: 15px;
+				height: 20px;
+				border-top:none;
+				border-left:none;
+				border-right:none;
+				text-decoration:none;
+				outline:none;
+				margin-bottom:10px;
+				width:100%;
+			}
+			button {
+				background-color: #eb0f43;
+				color: #FFFFFF;
+				border: none;
+				width: 100%;
+				padding: 15px 0;
+				text-transform: uppercase;
+				font-weight: 600;
+				border-radius: 3px;
+				text-align:center;
+			}
             .middleplace{
-                width: 600px;
+                max-width: 600px;
                 height: 400px;
 
-                position: absolute;
+                /*position: absolute;*/
                 top:0;
                 bottom: 0;
                 left: 0;
@@ -22,10 +50,14 @@ and open the template in the editor.
 
                 margin: auto;
             }
-            .inputform{
-                height:34px ;
-                width:100%;
-                font-size:18px;
+            
+            #authentication ul {  padding: 6px;}
+            #authentication ul li{ clear:both;}
+
+            .input-box{
+                height:40px ;
+                width:88%;
+ 
                 line-height: 1.42857143;
                 color: #555;
                 border: 1px solid #ccc;
@@ -34,6 +66,7 @@ and open the template in the editor.
                 margin-bottom:10px;
                 padding: 6px 12px;
             }
+            select.input-box {  width: 94%;}
             .button{
                 box-shadow: 0 1px 0 #fff;
                 height: 43px;
@@ -54,25 +87,25 @@ and open the template in the editor.
             }
         </style>
     </head>
-    <body style="background-color: #B7B7BD">
+    <body style="background-color: #F7F7FD;">
         <div class="middleplace">
-            <div style="padding: 3px 6px 3px 6px;width:100%">
+            <div style="width:100%">
                 <div style="margin-bottom:10px;text-align: center"><h1>MLS Validation</h1></div>
                 <div id="authentication" style="text-align: center;">
                 <form onsubmit=" return validate(this);" >
                     <ul style="list-style-type: none">
-                        <!--<li><input class="inputform" placeholder="Mls Board" type="text">-->
+                        <!--<li><input class="input-box" placeholder="Mls Board" type="text">-->
                         <!--</li>-->
-                        <li><select name="MlsBoard" class="inputform">
+                        <li><label class="input-label">MLS Board</label><select name="MlsBoard" class="input-box">
                                 <option value=""> Select Mls Board</option>
                                 <option value="Miami Board of Realtors">Miami Board of Realtors</option>
                             </select>
                         </li>
-                        <li><input name ="UserName" class="inputform" placeholder="User Name" type="text"></li>
-                        <li><input name="Password" class="inputform" placeholder="Password" type="text"></li>
-                        <li><input name="UserAgent" class="inputform" placeholder="User Agent" type="text"></li>
-                        <li><input name="UserAgentPassword" class="inputform" placeholder="User Agent Password" type="text"></li>
-                        <li><select name="RetsVersion" class="inputform">
+                        <li><label class="input-label">User Name</label><input name ="UserName" class="input-box" placeholder="User Name" type="text"></li>
+                        <li><label class="input-label">Password</label><input name="Password" class="input-box" placeholder="Password" type="text"></li>
+                        <li><label class="input-label">User Agent</label><input name="UserAgent" class="input-box" placeholder="User Agent" type="text"></li>
+                        <li><label class="input-label">User Agent Password</label><input name="UserAgentPassword" class="input-box" placeholder="User Agent Password" type="text"></li>
+                        <li><label class="input-label">Rets Version</label><select name="RetsVersion" class="input-box">
                                 <option value=""> Select Rets Version</option>
                                 <option value="RETS/1.7.2">RETS/1.7.2</option>
                             </select>

@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -9,7 +9,7 @@ and open the template in the editor.
         <title>Property</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <style>
           .carousel-inner > .item > img,
           .carousel-inner > .item > a > img {
@@ -32,7 +32,7 @@ and open the template in the editor.
 				box-shadow: 0px 1px 0px #fff;
 				color: #444444;
 				font-size: 15px;
-				height: 20px;
+				height: 40px;
 				border-top:none;
 				border-left:none;
 				border-right:none;
@@ -56,129 +56,64 @@ and open the template in the editor.
         
     </head>
     <body>
-    	<form class="form-inline" role="form" id="searchProperty" onsubmit=" return display(this);" style="margin-bottom:10px;">
-    	<div class="row">
-        	<div class="col-sm-12">
-            	<h2>MLS Filter</h2>
+         <div class="container">
+            <div class="col-sm-12 col-md-6">
+               <form class="form-inline" role="form" id="searchProperty" onsubmit=" return display(this);" style="margin-bottom:10px;">
+           <div class="row">
+                   <div class="col-sm-12">
+                   <h2>MLS Listing</h2>
+               </div>
+                   <div class="input-field col-sm-6">
+                   <label for="contact_name" class="input-label">Address:</label><br>
+                                   <input required="" name="StreetName" id="Address" type="text" class="validate input-box">
+               </div>
+               <div class="clearfix"></div>
+               <div class="input-field col-sm-4">
+                   <button type="submit">Submit</button>
+               </div>
+               <div class="clearfix"></div>
+           </div>
+           </form>
             </div>
-        	<div class="input-field col-sm-6">
-            	<label for="contact_name" class="input-label">Address:</label><br>
-				<input required="" name="unparsedaddress" id="Address" type="text" class="validate input-box">
-            </div>
-            <div class="input-field col-sm-6">
-            	<label for="contact_name" class="input-label">MLS Board:</label><br>
-				<select   class="validate input-box" name="listaor" id ="MlsBoard" >
-                	<option value="Miami Board of Realtors">Miami Board of Realtors</option>
-                </select>
-            </div>
-            <div class="clearfix"></div>
-            <div class="input-field col-sm-6">
-            	<label for="contact_name" class="input-label">City:</label><br>
-				<input type="text" class="validate input-box" id="City" name="city" style="">
-            </div>
-            <div class="input-field col-sm-6">
-            	<label for="contact_name" class="input-label">State:</label><br>
-				<select   class="validate input-box" name="stateorprovince">
-                	<option value="">Select</option>
-                                <option value="AL">Alabama</option>
-                                <option value="AK">Alaska</option>
-                                <option value="AZ">Arizona</option>
-                                <option value="AR">Arkansas</option>
-                                <option value="CA">California</option>
-                                <option value="CO">Colorado</option>
-                                <option value="CT">Connecticut</option>
-                                <option value="DE">Delaware</option>
-                                <option value="DC">District Of Columbia</option>
-                                <option value="FL">Florida</option>
-                                <option value="GA">Georgia</option>
-                                <option value="HI">Hawaii</option>
-                                <option value="ID">Idaho</option>
-                                <option value="IL">Illinois</option>
-                                <option value="IN">Indiana</option>
-                                <option value="IA">Iowa</option>
-                                <option value="KS">Kansas</option>
-                                <option value="KY">Kentucky</option>
-                                <option value="LA">Louisiana</option>
-                                <option value="ME">Maine</option>
-                                <option value="MD">Maryland</option>
-                                <option value="MA">Massachusetts</option>
-                                <option value="MI">Michigan</option>
-                                <option value="MN">Minnesota</option>
-                                <option value="MS">Mississippi</option>
-                                <option value="MO">Missouri</option>
-                                <option value="MT">Montana</option>
-                                <option value="NE">Nebraska</option>
-                                <option value="NV">Nevada</option>
-                                <option value="NH">New Hampshire</option>
-                                <option value="NJ">New Jersey</option>
-                                <option value="NM">New Mexico</option>
-                                <option value="NY">New York</option>
-                                <option value="NC">North Carolina</option>
-                                <option value="ND">North Dakota</option>
-                                <option value="OH">Ohio</option>
-                                <option value="OK">Oklahoma</option>
-                                <option value="OR">Oregon</option>
-                                <option value="PA">Pennsylvania</option>
-                                <option value="RI">Rhode Island</option>
-                                <option value="SC">South Carolina</option>
-                                <option value="SD">South Dakota</option>
-                                <option value="TN">Tennessee</option>
-                                <option value="TX">Texas</option>
-                                <option value="UT">Utah</option>
-                                <option value="VT">Vermont</option>
-                                <option value="VA">Virginia</option>
-                                <option value="WA">Washington</option>
-                                <option value="WV">West Virginia</option>
-                                <option value="WI">Wisconsin</option>
-                                <option value="WY">Wyoming</option>
-                </select>
-            </div>
-            <div class="clearfix"></div>
-            <div class="input-field col-sm-6">
-            	<label for="contact_name" class="input-label">Zipcode:</label><br>
-				<input type="text" class="validate input-box" name="postalcode" id="Zip">
-            </div>
-            <div class="clearfix"></div>
-            <div class="input-field col-sm-4">
-            	<button type="submit">Submit</button>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        </form>
-    
-        <div class="container" id="filterOptions">
-            <div class="row">
-                   
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                         <!-- Wrapper for slides -->
-                        <div id="imagecarousel" class="carousel-inner" role="listbox">
-                            <div class="item active"><img src="nopic.png" width="460" height="345"></div>
-                        </div>
 
-                        <!-- Left and right controls -->
-                        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <div  style="margin-top:20px" id="datablock">
-                        <table id="datadetails" class="table table-striped">
-                        </table>
-                    </div>
-                </div>
-                
-            </div> <!-- div row -->
-        </div> <!-- div Container -->
+           <div class="col-sm-12 col-md-6">
+               <div class="" id="filterOptions">
+               <div class="row">
+
+                   <div class="col-sm-12">
+                       <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <!-- Wrapper for slides -->
+                           <div id="imagecarousel" class="carousel-inner" role="listbox">
+                               <div class="item active"><img src="nopic.png" width="460" height="345"></div>
+                           </div>
+
+                           <!-- Left and right controls -->
+                           <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                               <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                               <span class="sr-only">Previous</span>
+                           </a>
+                           <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                               <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                               <span class="sr-only">Next</span>
+                           </a>
+                       </div>
+                   </div>
+
+                   <div class="col-sm-12 col-md-6 col-lg-6">
+                       <div  style="margin-top:20px" id="datablock">
+                           <table id="datadetails" class="table table-striped">
+                           </table>
+                       </div>
+                   </div>
+
+               </div> <!-- div row -->
+           </div> <!-- div Container -->
+           </div>
+        </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
         <script src="mls_one.js"></script>
+        <script src="autocompletebasic.js"></script>
     </body>
 </html>

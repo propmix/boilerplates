@@ -3,39 +3,11 @@
 var ajaxData = function (data) {
     processData(data);
 };
-var ajaximg = function (data) {
-    if (data['listingImages']) {
-//console.log($resdata['listingImages']);
-        var html='';
-        var i = 1;
-        var active = '';
-        $.each(data['listingImages'], function () {
-            $.each(this, function (key, value) {
-                if (key !== 'ListingKey') {
-                    if (i++ == 1){
-                       active = "active"; 
-                       
-                    }
-                    html += '<div class="item '+active+'">';
-                    active = '';
-                    html += '<img src="' + value + '"  width="460" height="345"></div>';
-                    $("#imagecarousel").html(html);
-                    $("#myCarousel").carousel();
-                }
-            })
-        })
-    }
-};
+
 function display(form) {
-    var url = "API END POINT";
-    var contData = {'access_token': 'TOKEN'};
+    var url = "https://api.propmix.io/propmixapps/MlsListings/GetProperty";
     var formser = serializeObject(form);
-    console.log(formser);
-    var dat = {"where": formser};
-    var obj = JSON.stringify(dat);
-    var data = "filter=" + obj + "&" + $.param(contData);
-    console.log(data);
-    ajaxCall(url, data, ajaxData);
+    ajaxCall(url, $.param(formser), ajaxData);
     return false;
 }
 
@@ -47,7 +19,11 @@ function ajaxCall(url, data, func) {
         //async: false,
         processData: false,
         contentType: false,
-        success: func
+        success: func,
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert('Invalid Address');
+            
+        }
     });
 }
 
@@ -69,40 +45,38 @@ function serializeObject(obj)
     return o;
 }
 function processData(data) {
-    if (!data.error) {
-        if ($.isArray(data) || data.length) {
-            //alert(data.length);
-            var selected, dateprev, datecur;
-            selected = data[0];
-            if (data.length > 1) {
-                $.each(data, function () {
-
-                    //alert(this.listingkey);
-                    if (!datecur) {
-                        dateprev = datecur;
-                    }
-                    datecur = Date.parse(this.modificationtimestamp);
-                    if (dateprev && (datecur > dateprev)) {
-                        selected = this;
-                    }
-
-                })
-            }
-            formatHtml(selected);
-        }
+    if (!data.error && data.Property && data.Property.Rets_id) {
+            formatHtml(data.Property);
+    } else {
+        alert('No Data');
     }
 }
 
 function formatHtml(data) {
     var html = "";
-    html += "<tr><td>Lot features</td><td>" + data.lotfeatures + "</td></tr>";
-    html += "<tr><td>Water Resource</td><td>" + data.watersource + "</td></tr>";
-    html += "<tr><td>Bedrooms</td><td>" + data.bedroomstotal + "</td></tr>";
-    html += "<tr><td>Livin area</td><td>" + data.livingarea + "</td></tr>";
-    var mlsboard = data.listaor;
+    html += "<tr><td>Property Type</td><td>" + data.PropertyType + "</td></tr>";
+    html += "<tr><td>Baths</td><td>" + data.Baths + "</td></tr>";
+    html += "<tr><td>Beds</td><td>" + data.Beds + "</td></tr>";
+    html += "<tr><td>Living area</td><td>" + data.GLA + "</td></tr>";
     $("#datadetails").html(html);
     //===============================================================================
-    var url = "API END POINT";
-    var $jsondata = {"mlsListingKey": data.listingkey, "MlsBoard": mlsboard, "OrderID": ORDERID, "access_token": "TOKEN"};
-    ajaxCall(url, $.param($jsondata), ajaximg);
+   if (data['ImageUrl']) {
+       
+//console.log($resdata['listingImages']);
+        var html='';
+        var i = 1;
+        var active = '';
+        var img = data.ImageUrl.split('|');
+            $.each(img, function (key, value) {
+                    if (i++ == 1){
+                       active = "active"; 
+                       
+                    }
+                    html += '<div class="item '+active+'">';
+                    active = '';
+                    html += '<img src="' + value + '"  width="460" height="345"></div>';
+                    $("#imagecarousel").html(html);
+                    $("#myCarousel").carousel();
+            });
+    }
 }

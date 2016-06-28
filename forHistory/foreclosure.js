@@ -8,13 +8,14 @@ $(document.body)
         .on('submit', "[id='searchforeclosure']", function (e) {//handle submit events
             e.preventDefault();
             var $formObj = this;
-            $url = 'API END POINT';
-            var $xtra = {'access_token': 'TOKEN'};
+           // https://api.propmix.io/redatacloud/v1/foreclosures
+            $url = 'https://api.propmix.io/propmixapps/foreclosures';
+            var $xtra = {'access_token': 'aqZGvdSTwstrGLyYvXmGKHeEplDUryXuyEUC8XvVOzf3AD1rVFqzkRKCYLUnhavR'};
             var formser = serializeObject($formObj);
             console.log(formser);
             var dat = {"where": formser};
             var obj = JSON.stringify(dat);
-            var data = "filter=" + obj + "&" + $.param($xtra);
+            var data = "filter=" + obj;// + "&" + $.param($xtra);
             ajaxcall($url, data);
         })
 
@@ -41,11 +42,21 @@ function ajaxcall($url, $form) {
         type: 'GET',
         data: $form,
         async: false,
-        success: function ($data) {
-            var $processedData = processData($data[0]);
+        success: function ($data) {console.log($data);
+            if ($data.length > 0){
+                var $processedData = processData($data[0]);//console.log($processedData);
            // alert($processedData);
             $('#foreclosuredata').html($processedData);
             //$("td[colspan=3]").find("p").hide();
+            } else {
+                $('#foreclosuredata').html('');
+                alert('No Data Found.');
+            }
+            
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            $('#foreclosuredata').html('');
+            alert('No Data Found.');
         }
     });
 }
@@ -73,7 +84,7 @@ function processData($data) {
         }
 
         $html += '</tbody></table>';
-        if (flg == 1) {
+        if (flg !== 1) {
             $html = "<h1>No History Data Exists.</h1>";
         }
 
